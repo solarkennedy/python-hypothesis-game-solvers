@@ -1,8 +1,10 @@
+#!/usr/bin/env python3
+import unittest
 from hypothesis import note, settings
-from hypothesis.stateful import RuleBasedStateMachine, rule, invariant
+from hypothesis.stateful import RuleBasedStateMachine, rule, invariant, precondition
 
 
-class DieHardProblem(RuleBasedStateMachine):
+class LeverProblem(RuleBasedStateMachine):
     total = 0
     nsteps = 0
 
@@ -16,7 +18,7 @@ class DieHardProblem(RuleBasedStateMachine):
         self.total = self.total + 40
         self.nsteps = self.nsteps + 1
 
-    @precondition(lambda self: self.total >= 0)
+    @precondition(lambda self: self.total >= 57)
     @rule()
     def north(self):
         self.total = self.total - 57
@@ -30,7 +32,7 @@ class DieHardProblem(RuleBasedStateMachine):
     @invariant()
     def the_rules(self):
         assert 0 <= self.total <= 97
-#        assert self.nsteps <= 5
+        assert self.nsteps <= 5
 
     @invariant()
     def not_solved(self):
@@ -38,5 +40,8 @@ class DieHardProblem(RuleBasedStateMachine):
         assert self.total != 88
 
 
-with settings(max_examples=2000):
-    QProblemTest = DieHardProblem.TestCase
+QProblemTest = LeverProblem.TestCase
+QProblemTest.settings = settings(max_examples=2000000)
+
+if __name__ == "__main__":
+    unittest.main()

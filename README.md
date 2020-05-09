@@ -67,6 +67,8 @@ state.teardown()
 
 ### Lever Problem
 
+I don't remember this one.
+
 ### Mechanics Solver
 
 <a href="https://youtu.be/nUkXURNNGjo?t=3136" target="_blank">
@@ -78,3 +80,4 @@ Solver: [mechanics_solver.py](https://github.com/solarkennedy/python-hypothesis-
 ```
 Falsifying example: test_mechanics_solver(positions=[5, 4, 6, 2, 14])
 ```
+
