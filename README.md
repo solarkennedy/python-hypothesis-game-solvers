@@ -8,10 +8,10 @@ This repo has solutions to some games using [Python Hypothesis](https://hypothes
 ### Gear Wall Mover
 
 <a href="https://youtu.be/nUkXURNNGjo?t=2900" target="_blank">
-<img src="https://raw.githubusercontent.com/solarkennedy/python-hypothesis-game-solvers/master/gear_wall_mover.png" alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" />
+<img src="https://raw.githubusercontent.com/solarkennedy/python-hypothesis-game-solvers/master/gear_wall_mover.png" width="480" height="270" border="10" />
 </a>
 
-[gear_wall_mover.py](https://github.com/solarkennedy/python-hypothesis-game-solvers/blob/master/gear_wall_mover.py)
+Solver: [gear_wall_mover.py](https://github.com/solarkennedy/python-hypothesis-game-solvers/blob/master/gear_wall_mover.py)
 
 This puzzle has 4 rings, but they don't move independently.
 This solver asserts that there is no sequence of moves that result in all of the rings "pointing 90 degrees".
@@ -63,4 +63,18 @@ state.mode4_right()
 state.mode4_right()
 > Rings are 90, 90, 90, 90
 state.teardown()
+```
+
+### Lever Problem
+
+### Mechanics Solver
+
+<a href="https://youtu.be/nUkXURNNGjo?t=3136" target="_blank">
+<img src="https://raw.githubusercontent.com/solarkennedy/python-hypothesis-game-solvers/master/mechanics_solver.png" width="480" height="270" border="10" />
+</a>
+
+Solver: [mechanics_solver.py](https://github.com/solarkennedy/python-hypothesis-game-solvers/blob/master/mechanics_solver.py)
+
+```
+Falsifying example: test_mechanics_solver(positions=[5, 4, 6, 2, 14])
 ```

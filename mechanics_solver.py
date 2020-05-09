@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+import unittest
 from itertools import combinations
 
 from hypothesis import given, settings, note, Phase
@@ -95,10 +98,9 @@ def test_rule4_good():
     assert rule4(m), ('\n'.join([''.join(['{:4}'.format(item) for item in row]) for row in m]))
 
 
-with settings(max_examples=200000000000, max_iterations=200000, max_mutations=1000, timeout=0,  phases=[Phase.generate]):
-    #@given(sampled_from(combinations(range(16), 5)))
-    @given(lists(elements=integers(min_value=1, max_value=15), min_size=5, max_size=5, unique=True))
-    def test_mechanics_solver(positions):
+@given(lists(elements=integers(min_value=1, max_value=15), min_size=5, max_size=5, unique=True))
+@settings(max_examples=200000000000, deadline=None, phases=[Phase.generate])
+def test_mechanics_solver(positions):
         m = [[0 for x in range(4)] for y in range(4)] 
 
         # First we place the knobs in the positions according to the input list
@@ -109,3 +111,7 @@ with settings(max_examples=200000000000, max_iterations=200000, max_mutations=10
             m[row][col] = knob + 1
         note('\n'.join([''.join(['{:4}'.format(item) for item in row]) for row in m]))
         assert not all([rule1(m), rule2(m), rule3(m), rule4(m), rule5(m), rule6(m)])
+
+
+if __name__ == "__main__":
+    test_mechanics_solver()
