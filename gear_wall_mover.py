@@ -28,11 +28,14 @@ class GearWallProblem(RuleBasedStateMachine):
         self.ring1 = (self.ring1 + 45) % 360
         self.ring4 = (self.ring4 + 45) % 360
 
+    @settings(max_examples=20000, stateful_step_count=20)
     @invariant()
     def not_solved(self):
         note("> Rings are {}, {}, {}, {}".format(self.ring1, self.ring2, self.ring3, self.ring4))
         assert not self.ring1 == self.ring2 == self.ring3 == self.ring4 == self.desired_end_state
 
+GearWallTest = GearWallProblem.TestCase
 
-with settings(max_examples=20000, stateful_step_count=20):
-    GearWallTest = GearWallProblem.TestCase
+
+if __name__ == "__main__":
+    unittest.main()
